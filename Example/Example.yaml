@@ -1,0 +1,35 @@
+#Copyright (c) 2017 ICC-Inatel Competence Center
+#All rights reserved.
+#This code is meant to illustrate how to write
+#a yaml file
+#@author jponeticarvalho
+#@date   28/08/2017
+
+metadata:
+    format: Lava-Test Test Definition 1.0
+    #Name of your test
+    name: Example
+    #Description of your test.
+    description: "Example of coding."
+    #Who is offering maintenance for the code.
+    maintainer:
+        - joao.carvalho@inatel.br
+    #System that will be used.
+    os:
+        - ubuntu
+    #Scope of your test.
+    scope:
+        - functional
+    devices:
+
+#Parameters of your test.
+params:
+    #SKIP_INSTALL eans that you can perform
+    #dependency installation or not
+    SKIP_INSTALL: "True"
+
+run:
+    steps:
+        - cd ./automated/linux/Example/
+        - bash Example.sh -s "${SKIP_INSTALL}"
+        - ../../utils/send-to-lava.sh ./output/result.txt
